@@ -1,19 +1,30 @@
 <template>
   <div class="user">
-    <h1>Create User</h1>
+    <h1>User List</h1>
 
     <h3>Just some database interaction...</h3>
+    
+    <div class="col-md-12">
+      <table  class="table table-dark">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Slack</th>
+        </tr>
+        </thead>
+        <tbody v-for="users in usersDTO">
+        <tr>
+          <td>{{users.id }}</td>
+          <td>{{users.name}}</td>
+          <td>{{users.email}}</td>
+          <td>{{users.slack}}</td>
+        </tr>
 
-    <input type="text" v-model="user.firstName" placeholder="first name">
-    <input type="text" v-model="user.lastName" placeholder="last name">
-
-    <button @click="createNewUser()">Create User</button>
-
-    <div v-if="showResponse"><h6>User created with Id: {{ response }}</h6></div>
-
-    <button v-if="showResponse" @click="retrieveUser()">Retrieve user {{user.id}} data from database</button>
-
-    <h4 v-if="showRetrievedUser">Retrieved User {{retrievedUser.firstName}} {{retrievedUser.lastName}}</h4>
+        </tbody>
+      </table>
+    </div>
 
   </div>
 </template>
