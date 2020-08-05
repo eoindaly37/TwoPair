@@ -3,7 +3,7 @@
     <h1>User List</h1>
 
     <h3>Just some database interaction...</h3>
-    
+
     <div class="col-md-12">
       <table  class="table table-dark">
         <thead>
@@ -40,9 +40,10 @@
         response: [],
         errors: [],
         user: {
-          lastName: '',
-          firstName: '',
           id: 0
+          name: '',
+          email: '',
+          slack: '',
         },
         showResponse: false,
         retrievedUser: {},
@@ -50,19 +51,6 @@
       }
     },
     methods: {
-      // Fetches posts when the component is created.
-      createNewUser () {
-
-        api.createUser(this.user.firstName, this.user.lastName).then(response => {
-            // JSON responses are automatically parsed.
-            this.response = response.data;
-            this.user.id = response.data;
-            console.log('Created new User with Id ' + response.data);
-            this.showResponse = true
-          })
-          .catch(e => {
-            this.errors.push(e)
-          })
       },
       retrieveUser () {
         api.getUser(this.user.id).then(response => {
