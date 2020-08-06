@@ -25,6 +25,7 @@ class UsersController {
 
 	@GetMapping("/users")
 	List<UsersDTO> all() {
+		System.out.println("Received Request");
 		return service.all();
 	}
 

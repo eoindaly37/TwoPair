@@ -1,20 +1,31 @@
 import axios from 'axios'
 
-const AXIOS = axios.create({
-  baseURL: `/api`,
-  timeout: 1000
-});
 
+// axios.interceptors.request.use(function (config) {
+//     // Do something before request is sent
+//     console.log(config)
+//     return config;
+// }, function (error) {
+//     // Do something with request error
+//     return Promise.reject(error);
+// });
+const AXIOS = axios.create({
+    baseURL: ``,
+    timeout: 1000
+});
 
 export default {
     hello() {
         return AXIOS.get(`/hello`);
     },
+    getUsers() {
+        return AXIOS.get(`/users`);
+    },
     getUser(userId) {
-        return AXIOS.get(`/user/` + userId);
+        return AXIOS.get(`/users/` + userId);
     },
     createUser(firstName, lastName) {
-        return AXIOS.post(`/user/` + firstName + '/' + lastName);
+        return AXIOS.post(`/users/` + firstName + '/' + lastName);
     },
     getSecured(user, password) {
         return AXIOS.get(`/secured/`,{
