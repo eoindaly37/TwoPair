@@ -14,8 +14,8 @@
                 </tr>
                 </thead>
                 <tbody v-for="user in retrievedUser">
-                <tr>y
-                    <td>{{user.id }}</td>
+                <tr>
+                    <td>{{user.id}}</td>
                     <td>{{user.name}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.slack}}</td>
@@ -24,7 +24,6 @@
                 </tbody>
             </table>
         </div>
-
     </div>
 </template>
 
@@ -35,14 +34,14 @@
         name: 'user',
         data() {
             return {
-                users: [],
                 response: [],
                 errors: [],
                 user: {
+                    id: 0,
                     name: '',
                     email: '',
                     slack: '',
-                    id: 0
+
                 },
                 showResponse: false,
                 retrievedUser: {},
@@ -50,7 +49,7 @@
             }
         },
         methods: {},
-        retrieveUser() {
+        retrieve() {
             api.getUsers().then(response => {
                 // JSON responses are automatically parsed.
                 console.log(response)

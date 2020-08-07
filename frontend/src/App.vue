@@ -1,12 +1,27 @@
-<template>
+<template class="test">
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Hello</router-link> |
-      <router-link to="/callservice">Service</router-link> |
-      <router-link to="/bootstrap">Bootstrap</router-link> |
-      <router-link to="/user">User</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/protected">Protected</router-link>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">VMware 2Pair</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+              aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <router-link class="nav-link" active-class="active" to="/subcomponents">Subcomponents</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" active-class="active" to="/bootstrap">Bootstrap</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" active-class="active" to="/users">Users</router-link>
+          </li>
+          <li class="nav-item"></li>
+        </ul>
+      </div>
+    </nav>
+    <div>
     </div>
     <router-view :hellomsg="msg"></router-view>
   </div>
@@ -24,24 +39,36 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="css">
+
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-     color: #42b983;
-    }
+.navbar {
+  background: rgb(34, 83, 195);
+  background: linear-gradient(50deg, rgba(34, 83, 195, 1) 0%, rgba(65, 180, 36, 1) 100%);
+}
+
+@media screen and (max-width: 800px) {
+  .main-content{width: 90%;}
+  .company__info{
+    display: none;
   }
+  .login_form{
+    border-top-left-radius:20px;
+    border-bottom-left-radius:20px;
+  }
+}
+@media screen and (min-width: 780px) and (max-width:800px){
+  .main-content{width: 70%;}
+}
+.row > h2{
+  color: rgba(65,180,36,1) !important;
 }
 </style>

@@ -21,6 +21,9 @@ export default {
     getUsers() {
         return AXIOS.get(`/users`);
     },
+    getSubs(){
+         return AXIOS.get('/subcomponents')
+    },
     getUser(userId) {
         return AXIOS.get(`/users/` + userId);
     },

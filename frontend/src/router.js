@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Service from '@/components/Service'
 import Bootstrap from '@/components/Bootstrap'
+import Subcomponents from "@/components/Subcomponents";
 import User from '@/components/User'
 import Login from '@/components/Login'
 import Protected from '@/components/Protected'
@@ -17,6 +18,7 @@ const router = new Router({
         { path: '/', component: Hello },
         { path: '/callservice', component: Service },
         { path: '/bootstrap', component: Bootstrap },
+        { path : '/subcomponents', component: Subcomponents},
         { path: '/user', component: User },
         { path: '/login', component: Login },
         {
