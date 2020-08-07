@@ -12,6 +12,14 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 
 new Vue({
+    el: "#app",
+    data() {
+        return {
+            mystyles: {
+                backgroundColor: "#05d"
+            }
+        };
+    },
     router,
     store,
     render: h => h(App)

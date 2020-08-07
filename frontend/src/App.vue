@@ -1,7 +1,9 @@
-<template class="test">
+
+<template class="">
+  <div class="mystyles">
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">VMware 2Pair</a>
+      <a class="navbar-brand" href="/hello">VMware 2Pair</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
               aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -15,7 +17,7 @@
             <router-link class="nav-link" active-class="active" to="/bootstrap">Bootstrap</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" active-class="active" to="/users">Users</router-link>
+            <router-link class="nav-link" active-class="active" to="/user">Users</router-link>
           </li>
           <li class="nav-item"></li>
         </ul>
@@ -24,6 +26,7 @@
     <div>
     </div>
     <router-view :hellomsg="msg"></router-view>
+  </div>
   </div>
 </template>
 
@@ -47,7 +50,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  margin-top: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .navbar {
