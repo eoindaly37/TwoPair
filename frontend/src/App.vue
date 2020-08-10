@@ -13,9 +13,11 @@
           <li class="nav-item">
             <router-link class="nav-link" active-class="active" to="/subcomponents">Subcomponents</router-link>
           </li>
+          <!--
           <li class="nav-item">
             <router-link class="nav-link" active-class="active" to="/bootstrap">Bootstrap</router-link>
           </li>
+          -->
           <li class="nav-item">
             <router-link class="nav-link" active-class="active" to="/user">Users</router-link>
           </li>
@@ -36,7 +38,7 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to your Vue.js powered Spring Boot App'
+      msg: 'Welcome to 2Pair'
     }
   }
 }

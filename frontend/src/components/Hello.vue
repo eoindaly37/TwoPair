@@ -1,24 +1,40 @@
 <template>
-  <div class="hello">
-    <img src="./../assets/spring-boot-vuejs-logo.png">
-    <h1>{{ hellomsg }}</h1>
-    <h2>See the sources here: </h2>
-    <ul>
-      <li><a href="https://github.com/jonashackt/spring-boot-vuejs" target="_blank">github.com/jonashackt/spring-boot-vuejs</a></li>
-    </ul>
-    <h3>This site contains more stuff :)</h3>
-    <ul>
-        <li>HowTo call REST-Services:</li>
-        <li><router-link to="/callservice">/callservice</router-link></li>
-        <li>HowTo to play around with Bootstrap UI components:</li>
-        <li><router-link to="/bootstrap">/bootstrap</router-link></li>
-        <li>HowTo to interact with the Spring Boot database backend:</li>
-        <li><router-link to="/user">/user</router-link></li>
-        <li>Login to the secured part of the application</li>
-        <li><router-link to="/login">/login</router-link></li>
-        <li>A secured part of this application:</li>
-        <li><router-link to="/protected">/protected</router-link></li>
-    </ul>
+  <div class="main">
+  <img src="../assets/vmt.png">
+  <div class="container-fluid d-flex justify-content-center">
+    <div class="row main-content bg-success text-center">
+      <div class=" col-md-4 text-center company__info">
+        <span class="company__logo">
+        </span>
+        <h4 class="company_title">Welcome to 2Pair</h4>
+      </div>
+      <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+        <div class="container-fluid">
+          <div class="row">
+            <form control="" class="form-group">
+              <div class="row">
+                <input type="text" name="username" id="username" class="form__input" placeholder="Username">
+              </div>
+              <div class="row">
+
+                <input type="password" name="password" id="password" class="form__input" placeholder="Password">
+              </div>
+              <div class="row remb">
+                <input type="checkbox" name="remember_me" id="remember_me" class="">
+                <label class="remember" for="remember_me">Remember Me!</label>
+              </div>
+              <div class="row">
+                <input type="submit" value="Submit" class="btn btn btn-outline-success">
+              </div>
+            </form>
+          </div>
+          <div class="row reg">
+            <p>Don't have an account? <a href="landing.html">Register Here</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -26,21 +42,7 @@
 export default {
     data() {
         return {
-            backgroundcolor: "#73A857",
-            color: [
-                "#16a085",
-                "#27ae60",
-                "#2c3e50",
-                "#f39c12",
-                "#e74c3c",
-                "#9b59b6",
-                "#FB6964",
-                "#342224",
-                "#472E32",
-                "#BDBB99",
-                "#77B1A9",
-                "#73A857"
-            ]
+
         };
     },
   name: 'hello',
@@ -67,5 +69,69 @@ li {
 
 a {
   color: #42b983;
+}
+
+
+.main-content{
+  width: 40%;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,.3);
+  margin: 5em auto;
+  display: flex;
+}
+.company__info{
+  background: rgb(34,83,195);
+  background: linear-gradient(50deg, rgba(34,83,195,1) 0%, rgba(65,180,36,1) 100%);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+
+.log{
+  margin-left: 3%;
+}
+.login_form{
+  background-color: #fff;
+  border-top-right-radius:20px;
+  border-bottom-right-radius:20px;
+  border-top:1px solid #ccc;
+  border-right:1px solid #ccc;
+}
+form{
+  padding: 0 2em;
+}
+.form__input{
+  width: 100%;
+  border:1px solid transparent;
+  border-radius: 0;
+  border-bottom: 1px solid #aaa;
+  padding: 1em .6em .6em;
+  padding-left: 2em;
+  outline:none;
+  margin:1.5em auto;
+  transition: all .5s ease;
+}
+.form__input:focus{
+  border-bottom-color: rgba(65,180,36,1) !important;
+  box-shadow: 0 0 5px rgb(34,83,195);
+  border-radius: 4px;
+}
+
+
+.btn:hover, .btn:focus{
+  background-image: linear-gradient(50deg, rgba(34,83,195,1) 0%, rgba(65,180,36,1) 100%) !important;
+  color:#fff;
+}
+
+.remember{
+  padding-top: 2%;
+  padding-left: 2%;
+}
+
+.row .reg{
+  padding-left: 4%;
 }
 </style>

@@ -1,10 +1,8 @@
 <template>
     <div class="user">
         <h1>User List</h1>
-        <h3>Just some database interaction...</h3>
-        <h4 v-if="showRetrievedUser">Retrieved User {{retrievedUser.name}} {{retrievedUser.email}}</h4>
         <div class="col-md-12">
-            <table class="table table-dark">
+            <table class="table table-dark table-striped table-bordered table-hover">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
