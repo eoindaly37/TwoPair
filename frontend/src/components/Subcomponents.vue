@@ -6,6 +6,7 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Product</th>
                     <th scope="col">Name</th>
                     <th scope="col">Notes</th>
                     <th scope="col">Code</th>
@@ -19,6 +20,7 @@
                 <tbody v-for="sub in retrievedSubs">
                 <tr>
                     <td>{{sub.id}}</td>
+                    <td>{{sub.productid.name}}</td>
                     <td>{{sub.name}}</td>
                     <td>{{sub.notes}}</td>
                     <td>{{sub.code}}</td>
@@ -46,6 +48,7 @@
                 errors: [],
                 sub: {
                     id: 0,
+                    productid: '',
                     name: '',
                     notes: '',
                     code: '',
@@ -60,25 +63,17 @@
                 showRetrievedSubs: false
             }
         },
-        methods: {},
-        retrieve() {
-            api.getSubs().then(response => {
-                // JSON responses are automatically parsed.
-                console.log(response)
-                this.retrievedSubs = response.data;
-                this.showRetrievedSubs = true
-            })
-                .catch(e => {
-                    this.errors.push(e)
-                })
-
-        },
         created() {
-            api.getSubs().then(response => {
-                console.log(response)
-                this.retrievedSubs = response.data;
-                this.showRetrievedSubs = true
-            })
+            this.getData();
+        },
+        methods: {
+            getData() {
+                api.getSubs().then(response => {
+                    console.log(response)
+                    this.retrievedSubs = response.data;
+                    this.showRetrievedSubs = true
+                });
+            }
         }
     }
 </script>

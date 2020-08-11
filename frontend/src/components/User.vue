@@ -1,5 +1,10 @@
 <template>
     <div class="user">
+        <input type="text" v-model="user.name" placeholder="name">
+        <input type="text" v-model="user.email" placeholder="email">
+        <input type="text" v-model="user.slack" placeholder="@slack">
+
+        <button @click="createNewUser()">Add User</button>
         <h1>User List</h1>
         <div class="col-md-12">
             <table class="table table-dark table-striped table-bordered table-hover">
@@ -46,25 +51,38 @@
                 showRetrievedUser: false
             }
         },
-        methods: {},
-        retrieve() {
-            api.getUsers().then(response => {
-                // JSON responses are automatically parsed.
-                console.log(response)
-                this.retrievedUser = response.data;
-                this.showRetrievedUser = true
-            })
-                .catch(e => {
-                    this.errors.push(e)
-                })
+
+        created() {
+            this.getData();
 
         },
-        created() {
-            api.getUsers().then(response => {
-              console.log(response)
-              this.retrievedUser = response.data;
-              this.showRetrievedUser = true
-            })
+        methods: {
+            createNewUser () {
+                console.log(this.user.name + " " + this.user.email + " "  + this.user.slack);
+                api.createUser(this.user.name, this.user.email, this.user.slack).then(response => {
+                    // JSON responses are automatically parsed.
+                    this.response = response.data;
+                    this.user.id = response.data;
+                   // console.log('Created new User with Id ' + response.data);
+                    console.log(response)
+                    this.showResponse = true
+                })
+                    .catch(e => {
+                        this.errors.push(e)
+                    })
+
+            },
+
+            getData() {
+                api.getUsers().then(response => {
+                    console.log(response)
+                    this.retrievedUser = response.data;
+                    this.showRetrievedUser = true
+                })
+                    .catch(e => {
+                        this.errors.push(e)
+                    })
+            }
         }
     }
 </script>

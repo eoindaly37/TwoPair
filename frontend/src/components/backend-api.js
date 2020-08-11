@@ -27,8 +27,8 @@ export default {
     getUser(userId) {
         return AXIOS.get(`/users/` + userId);
     },
-    createUser(firstName, lastName) {
-        return AXIOS.post(`/users/` + firstName + '/' + lastName);
+    createUser(name, email, slack) {
+        return AXIOS.post(`/users`, {"name":  name,  "email": email, "slack":slack});
     },
     getSecured(user, password) {
         return AXIOS.get(`/secured/`,{
