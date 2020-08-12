@@ -24,9 +24,6 @@ export default {
     getSubs(){
          return AXIOS.get('/subcomponents')
     },
-    getUser(userId) {
-        return AXIOS.get(`/users/` + userId);
-    },
     createUser(name, email, slack) {
         return AXIOS.post(`/users`, {"name":  name,  "email": email, "slack":slack});
     },
@@ -36,6 +33,12 @@ export default {
                 username: user,
                 password: password
             }});
+    },
+    createDomain(name) {
+    	return AXIOS.post(`/domains`, {"name": name});
+    },
+    getDomains() {
+    	return AXIOS.get(`/domains`);
     }
 }
 
