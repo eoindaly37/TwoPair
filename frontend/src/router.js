@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
+import Domain from '@/components/Domain'
 import Service from '@/components/Service'
 import Bootstrap from '@/components/Bootstrap'
 import Subcomponents from "@/components/Subcomponents";
@@ -20,6 +21,7 @@ const router = new Router({
         { path: '/bootstrap', component: Bootstrap },
         { path : '/subcomponents', component: Subcomponents},
         { path: '/user', component: User },
+        { path: '/domain', component: Domain },
         { path: '/login', component: Login },
         {
             path: '/protected',

@@ -1,17 +1,17 @@
 TN:
-SF:C:\Users\Falcon\Desktop\spring-boot-vuejs\frontend\src\App.vue
-FN:39,(anonymous_1)
+SF:/Users/pivotal/Documents/Development/ProjectX/2Pair/2Pair 0.2/frontend/src/App.vue
+FN:42,(anonymous_1)
 FNF:1
 FNH:1
 FNDA:1,(anonymous_1)
-DA:40,1
+DA:43,1
 LF:1
 LH:1
 BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\Falcon\Desktop\spring-boot-vuejs\frontend\src\components\Hello.vue
+SF:/Users/pivotal/Documents/Development/ProjectX/2Pair/2Pair 0.2/frontend/src/components/Hello.vue
 FN:43,(anonymous_1)
 FNF:1
 FNH:1
@@ -23,6 +23,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
+<<<<<<< HEAD
 SF:C:\Users\Falcon\Desktop\spring-boot-vuejs\frontend\src\components\User.vue
 FN:40,(anonymous_1)
 FN:57,(anonymous_2)
@@ -36,6 +37,18 @@ FN:90,(anonymous_9)
 FN:91,(anonymous_10)
 FN:95,(anonymous_11)
 FNF:11
+=======
+SF:/Users/pivotal/Documents/Development/ProjectX/2Pair/2Pair 0.2/frontend/src/components/User.vue
+FN:38,(anonymous_1)
+FN:55,(anonymous_2)
+FN:60,(anonymous_3)
+FN:62,(anonymous_4)
+FN:69,(anonymous_5)
+FN:76,(anonymous_6)
+FN:77,(anonymous_7)
+FN:81,(anonymous_8)
+FNF:8
+>>>>>>> 16393eb963db0d84f1351f314abcdd1e0365f069
 FNH:3
 FNDA:1,(anonymous_1)
 FNDA:1,(anonymous_2)
@@ -73,14 +86,19 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\Falcon\Desktop\spring-boot-vuejs\frontend\src\components\backend-api.js
+SF:/Users/pivotal/Documents/Development/ProjectX/2Pair/2Pair 0.2/frontend/src/components/backend-api.js
 FN:18,(anonymous_0)
 FN:21,(anonymous_1)
 FN:24,(anonymous_2)
 FN:27,(anonymous_3)
 FN:30,(anonymous_4)
+<<<<<<< HEAD
 FN:33,(anonymous_5)
 FN:36,(anonymous_6)
+=======
+FN:37,(anonymous_5)
+FN:40,(anonymous_6)
+>>>>>>> 16393eb963db0d84f1351f314abcdd1e0365f069
 FNF:7
 FNH:1
 FNDA:0,(anonymous_0)
@@ -96,8 +114,13 @@ DA:22,1
 DA:25,0
 DA:28,0
 DA:31,0
+<<<<<<< HEAD
 DA:34,0
 DA:37,0
+=======
+DA:38,0
+DA:41,0
+>>>>>>> 16393eb963db0d84f1351f314abcdd1e0365f069
 LF:8
 LH:2
 BRF:0
