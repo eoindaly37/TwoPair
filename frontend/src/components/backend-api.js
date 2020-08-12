@@ -30,6 +30,12 @@ export default {
     createUser(name, email, slack) {
         return AXIOS.post(`/users`, {"name":  name,  "email": email, "slack":slack});
     },
+    deleteUser(name, email, slack) {
+        return AXIOS.delete(`/users`,{"name":  name,  "email": email, "slack":slack});
+    },
+    updateUser(){
+        return AXIOS.put()
+    },
     getSecured(user, password) {
         return AXIOS.get(`/secured/`,{
             auth: {

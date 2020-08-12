@@ -5,6 +5,8 @@
         <input type="text" v-model="user.slack" placeholder="@slack">
 
         <button @click="createNewUser()">Add User</button>
+        <input type="text" v-model="user.id" placeholder="name">
+        <button @click="deleteExistingUser()">Delete User</button>
         <h1>User List</h1>
         <div class="col-md-12">
             <table class="table table-dark table-striped table-bordered table-hover">
@@ -56,7 +58,19 @@
             this.getData();
 
         },
+
         methods: {
+            deleteExistingUser () {
+                api.deleteUser.delete(this.user.id)
+                    .then(response => {
+                        this.response = response.data;
+                        this.user.id = response.data;
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            },
+
             createNewUser () {
                 console.log(this.user.name + " " + this.user.email + " "  + this.user.slack);
                 api.createUser(this.user.name, this.user.email, this.user.slack).then(response => {
