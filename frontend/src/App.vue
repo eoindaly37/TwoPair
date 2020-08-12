@@ -13,9 +13,6 @@
           <li class="nav-item">
             <router-link class="nav-link" active-class="active" to="/subcomponents">Subcomponents</router-link>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link" active-class="active" to="/domain">Domain</router-link>
-          </li>
           <!--
           <li class="nav-item">
             <router-link class="nav-link" active-class="active" to="/bootstrap">Bootstrap</router-link>

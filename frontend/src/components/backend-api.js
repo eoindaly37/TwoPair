@@ -24,14 +24,11 @@ export default {
     getSubs(){
          return AXIOS.get('/subcomponents')
     },
+    getUser(userId) {
+        return AXIOS.get(`/users/` + userId);
+    },
     createUser(name, email, slack) {
         return AXIOS.post(`/users`, {"name":  name,  "email": email, "slack":slack});
-    },
-    deleteUser(name, email, slack) {
-        return AXIOS.delete(`/users`,{"name":  name,  "email": email, "slack":slack});
-    },
-    updateUser(){
-        return AXIOS.put()
     },
     getSecured(user, password) {
         return AXIOS.get(`/secured/`,{
@@ -39,12 +36,6 @@ export default {
                 username: user,
                 password: password
             }});
-    },
-    createDomain(name) {
-    	return AXIOS.post(`/domains`, {"name": name});
-    },
-    getDomains() {
-    	return AXIOS.get(`/domains`);
     }
 }
 
