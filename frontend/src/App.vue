@@ -36,6 +36,8 @@
 
 export default {
   name: 'app',
+  components: {
+  },
   data () {
     return {
       msg: 'Welcome to 2Pair'
