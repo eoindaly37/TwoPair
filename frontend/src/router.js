@@ -5,6 +5,8 @@ import Service from '@/components/Service'
 import Bootstrap from '@/components/Bootstrap'
 import Subcomponents from "@/components/Subcomponents";
 import User from '@/components/User'
+import Domain from '@/components/Domain'
+import Product from '@/components/Product'
 import Login from '@/components/Login'
 import Protected from '@/components/Protected'
 
@@ -20,6 +22,8 @@ const router = new Router({
         { path: '/bootstrap', component: Bootstrap },
         { path : '/subcomponents', component: Subcomponents},
         { path: '/user', component: User },
+        { path: '/domain', component: Domain },
+        { path: '/product', component: Product },
         { path: '/login', component: Login },
         {
             path: '/protected',

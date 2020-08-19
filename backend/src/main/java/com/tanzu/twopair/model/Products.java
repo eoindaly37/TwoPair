@@ -25,11 +25,11 @@ public class Products {
 	@Column(name = "name")
 	private String name;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "lead", referencedColumnName = "id")
 	private Users lead;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "domainid", referencedColumnName = "id")
 	private Domains domain;
 	

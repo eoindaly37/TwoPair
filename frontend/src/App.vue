@@ -13,6 +13,10 @@
           <li class="nav-item">
             <router-link class="nav-link" active-class="active" to="/subcomponents">Subcomponents</router-link>
           </li>
+
+          <li class="nav-item">
+            <router-link class="nav-link" active-class="active" to="/product">Products</router-link>
+          </li>
           <!--
           <li class="nav-item">
             <router-link class="nav-link" active-class="active" to="/bootstrap">Bootstrap</router-link>
@@ -22,6 +26,10 @@
             <router-link class="nav-link" active-class="active" to="/user">Users</router-link>
           </li>
           <li class="nav-item"></li>
+
+          <li class="nav-item">
+            <router-link class="nav-link" active-class="active" to="/domain">Domains</router-link>
+          </li>
         </ul>
       </div>
     </nav>
