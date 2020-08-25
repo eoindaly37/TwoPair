@@ -2,14 +2,8 @@ package com.tanzu.twopair.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
+import javax.persistence.*;
+import java.util.List;
 
 
 @Data
@@ -29,14 +23,14 @@ public class Users {
 	@Column(name = "slack")
 	private String slack;
 
-	@OneToOne(mappedBy = "lead")
-	private Products product;
+	@OneToMany(mappedBy = "lead")
+	private List<Products> product;
 	
-	@OneToOne(mappedBy = "userid")
-	private PairWith pairwith;
+	@OneToMany(mappedBy = "userid")
+	private List<PairWith> pairwith;
 	
-	@OneToOne(mappedBy = "userid")
-	private LookForHelp lookforhelp;
+	@OneToMany(mappedBy = "userid")
+	private List<LookForHelp> lookforhelp;
 	
 	Users() {}
 

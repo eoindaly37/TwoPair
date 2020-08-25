@@ -2,16 +2,8 @@ package com.tanzu.twopair.model;
 
 import lombok.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
+import javax.persistence.*;
+import java.util.List;
 
 
 @Data
@@ -25,28 +17,27 @@ public class Products {
 	@Column(name = "name")
 	private String name;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "lead", referencedColumnName = "id")
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(referencedColumnName = "id")
 	private Users lead;
-	
-	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "domainid", referencedColumnName = "id")
+
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(referencedColumnName = "id")
 	private Domains domain;
 	
-	@OneToOne(mappedBy = "productid")
-	private Subcomponents subcomponent;
+	@OneToMany(mappedBy = "productid")
+	private List<Subcomponents> subcomponent;
 	
-	@OneToOne(mappedBy = "productid")
-	private PairWith pairwith;
+	@OneToMany(mappedBy = "productid")
+	private List<PairWith> pairwith;
 	
-	@OneToOne(mappedBy = "productid")
-	private LookForHelp lookforhelp;
+	@OneToMany(mappedBy = "productid")
+	private List<LookForHelp> lookforhelp;
 	
 	Products() {}
 
 	Products(String name, Users lead, Domains domain) {
 		this.name = name;
-		this.lead = lead;
 		this.domain = domain;
 	}
 }
