@@ -1,5 +1,6 @@
 package com.tanzu.twopair.controller;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import com.tanzu.twopair.service.ProductService;
 class ProductsController {
 
 	private ProductService service;
+	Logger LOG = Logger.getLogger("bob");
 
 	ProductsController(ProductService service) {
 		this.service = service;
@@ -29,8 +31,7 @@ class ProductsController {
 	}
 
 	@PostMapping("/products")
-	ProductsDTO newEmployee(@RequestBody ProductsDTO dto) {
-		return service.newProduct(dto);
+	ProductsDTO newEmployee(@RequestBody ProductsDTO dto) { return service.newProduct(dto);
 	}
 
 	// Single item

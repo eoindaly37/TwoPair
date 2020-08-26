@@ -45,9 +45,17 @@ export default {
         return AXIOS.get(`/products/` + productid);
     },
     createProduct(name, lead, domain) {
-        var userDTO = this.getUser(lead);
-        var domainDTO = this.getDomain(domain);
-        return AXIOS.post(`/products`, {"name":  name, "lead": userDTO, "domain": domainDTO});
+        var userres = this.getUser(lead);
+        var domainres = this.getDomain(domain);
+
+        axios.all([userres,domainres])
+            .then(axios.spread((userDTO,domainDTO) =>{
+                return AXIOS.post(`/products`, {"name": name, "lead": userDTO.data, "domain": domainDTO.data});
+        }))
+            .catch(errors => {
+                // react on errors.
+                console.error(errors);
+            });
     },
 
     getSubs(){
