@@ -1,9 +1,19 @@
 <template>
   <div class="user">
-    <input type="text" v-model="product.name" placeholder="name">
-    <input type="text" v-model="product.lead" placeholder="Lead ID">
-    <input type="text" v-model="product.domain" placeholder="Domain ID">
-    <button @click="createProduct()">Add Product</button>
+    <div class="inputs container-md" >
+      <input type="text" v-model="product.name" placeholder="name">
+      <ejs-dropdownlist popupHeight="200px" popupWidth="250px"
+                        :dataSource='userData' :fields='userField' placeholder='Select a name'
+                        v-model="product.lead"
+                        sortOrder='Descending'>
+      </ejs-dropdownlist>
+      <ejs-dropdownlist popupHeight="200px" popupWidth="250px"
+                        :dataSource='domainData' :fields='domainField' placeholder='Select a domain'
+                        v-model="product.domain"
+                        sortOrder='Descending'>
+      </ejs-dropdownlist>
+      <button @click="createProduct()">Add Product</button>
+    </div>
     <h1>Product List</h1>
     <div class="container-lg">
       <div class="table-responsive container-fluid">
@@ -22,11 +32,10 @@
           <table class="table table-striped table-hover">
             <thead>
             <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Lead</th>
-              <th>Domain</th>
-              <th>Action</th>
+              <th v-column-sortable:id>#</th>
+              <th v-column-sortable:name>Name</th>
+              <th v-column-sortable:lead.name>Lead</th>
+              <th v-column-sortable:domain.name>Domain</th>
             </tr>
             </thead>
             <tbody v-for="product in retrievedProduct">
@@ -50,8 +59,14 @@
 
 <script>
 import api from "./backend-api";
+import Vue from 'vue';
+import { DropDownListPlugin } from "@syncfusion/ej2-vue-dropdowns";
+import columnSortable from 'vue-column-sortable';
 
-export default {
+
+Vue.use(DropDownListPlugin);
+
+export default Vue.extend({
   name: 'product',
   data() {
     return {
@@ -66,7 +81,11 @@ export default {
       },
       showResponse: false,
       retrievedProduct: {},
-      showRetrievedProduct: false
+      showRetrievedProduct: false,
+      userData: [],
+      userField: { text: 'name', value: 'id' },
+      domainData: [],
+      domainField: { text: 'name', value: 'id' }
     }
   },
 
@@ -74,7 +93,11 @@ export default {
     this.getData();
 
   },
+  directives: {columnSortable},
   methods: {
+    orderBy(sortFn) {
+      this.retrievedProduct.sort(sortFn)
+    },
     createProduct () {
       console.log(this.product.name + " " + this.product.lead + " "  + this.product.domain);
       api.createProduct(this.product.name, this.product.lead, this.product.domain).then(response => {
@@ -99,15 +122,31 @@ export default {
       })
           .catch(e => {
             this.errors.push(e)
-          })
+          });
+
+      api.getUsers().then(response => {
+        this.userData = response.data;
+      })
+          .catch(e => {
+            this.errors.push(e)
+          });
+
+      api.getDomains().then(response => {
+        this.domainData = response.data;
+      })
+          .catch(e => {
+            this.errors.push(e)
+          });
     }
   }
-}
+})
 </script>
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+@import url(https://cdn.syncfusion.com/ej2/material.css);
 
 h1, h2 {
   font-weight: normal;
@@ -125,6 +164,10 @@ li {
 
 a {
   color: #42b983;
+}
+
+.inputs {
+  width: 12%;
 }
 
 .table-responsive {

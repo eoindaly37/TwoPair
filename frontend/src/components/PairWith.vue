@@ -1,8 +1,18 @@
 <template>
   <div class="user">
-    <input type="text" v-model="pairwith.productid" placeholder="Product ID">
-    <input type="text" v-model="pairwith.userid" placeholder="User ID">
-    <button @click="createPairWith()">Add Entry</button>
+    <div class="inputs container-md" >
+      <ejs-dropdownlist popupHeight="200px" popupWidth="250px"
+                        :dataSource='productData' :fields='productField' placeholder='Select a Product'
+                        v-model="pairwith.productid"
+                        sortOrder='Descending'>
+      </ejs-dropdownlist>
+      <ejs-dropdownlist popupHeight="200px" popupWidth="250px"
+                        :dataSource='userData' :fields='userField' placeholder='Select a User'
+                        v-model="pairwith.userid"
+                        sortOrder='Descending'>
+      </ejs-dropdownlist>
+      <button @click="createPairWith()">Add Entry</button>
+    </div>
     <h1>Pair With</h1>
     <div class="container-lg">
       <div class="table-responsive container-fluid">
@@ -21,10 +31,9 @@
           <table class="table table-striped table-hover">
             <thead>
             <tr>
-              <th>#</th>
-              <th>Product</th>
-              <th>User</th>
-              <th>Action</th>
+              <th v-column-sortable:id>#</th>
+              <th v-column-sortable:productid.name>Product</th>
+              <th v-column-sortable:userid.name>User</th>
             </tr>
             </thead>
             <tbody v-for="pairwith in retrievedPair">
@@ -47,6 +56,12 @@
 
 <script>
 import api from "./backend-api";
+import Vue from 'vue';
+import { DropDownListPlugin } from "@syncfusion/ej2-vue-dropdowns";
+import columnSortable from 'vue-column-sortable';
+
+
+Vue.use(DropDownListPlugin);
 
 export default {
   name: 'pairwith',
@@ -62,7 +77,11 @@ export default {
       },
       showResponse: false,
       retrievedPair: {},
-      showRetrievedPair: false
+      showRetrievedPair: false,
+      productData: [],
+      productField: { text: 'name', value: 'id' },
+      userData: [],
+      userField: { text: 'name', value: 'id' }
     }
   },
 
@@ -70,7 +89,11 @@ export default {
     this.getData();
 
   },
+  directives: {columnSortable},
   methods: {
+    orderBy(sortFn) {
+      this.retrievedPair.sort(sortFn)
+    },
     createPairWith () {
       console.log(this.pairwith.productid + " "  + this.pairwith.userid);
       api.createPairWith(this.pairwith.productid, this.pairwith.userid).then(response => {
@@ -95,7 +118,21 @@ export default {
       })
           .catch(e => {
             this.errors.push(e)
-          })
+          });
+
+      api.getUsers().then(response => {
+        this.userData = response.data;
+      })
+          .catch(e => {
+            this.errors.push(e)
+          });
+
+      api.getProducts().then(response => {
+        this.productData = response.data;
+      })
+          .catch(e => {
+            this.errors.push(e)
+          });
     }
   }
 }
@@ -121,6 +158,10 @@ li {
 
 a {
   color: #42b983;
+}
+
+.inputs {
+  width: 12%;
 }
 
 .table-responsive {
