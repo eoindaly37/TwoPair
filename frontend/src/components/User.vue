@@ -1,9 +1,12 @@
 <template>
     <div class="user">
+      <div v-if="!isHidden">
         <input type="text" v-model="user.name" placeholder="name">
         <input type="text" v-model="user.email" placeholder="email">
         <input type="text" v-model="user.slack" placeholder="@slack">
-        <button @click="createNewUser()">Add User</button>
+        <button v-on:click="isHidden = !isHidden" @click="createNewUser()">Add User</button>
+      </div>
+
         <h1>User List</h1>
         <div class="container-lg">
             <div class="table-responsive container-fluid">
@@ -14,19 +17,17 @@
                                 <h2><b>Users</b></h2>
                             </div>
                             <div class="col-sm-7">
-                                <a href="#" class="btn btn-secondary"><fa-icon :icon="['fas', 'plus-circle']"/><span>Add New User</span></a>
-
+                              <button v-on:click="isHidden = !isHidden" type="button" class="btn btn-danger">Edit</button>
                             </div>
                         </div>
                     </div>
                     <table class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Slack</th>
-                            <th>Action</th>
+                          <th v-column-sortable:id>#</th>
+                          <th v-column-sortable:name>Name</th>
+                          <th v-column-sortable:email>Lead</th>
+                          <th v-column-sortable:slack>Domain</th>
                         </tr>
                         </thead>
                         <tbody v-for="user in retrievedUser">
@@ -50,11 +51,13 @@
 
 <script>
     import api from "./backend-api";
+    import columnSortable from 'vue-column-sortable';
 
     export default {
         name: 'user',
         data() {
             return {
+              isHidden: true,
                 response: [],
                 errors: [],
                 user: {
@@ -74,7 +77,11 @@
             this.getData();
 
         },
-        methods: {
+      directives: {columnSortable},
+      methods: {
+        orderBy(sortFn) {
+          this.retrievedUser.sort(sortFn)
+        },
             createNewUser () {
                 console.log(this.user.name + " " + this.user.email + " "  + this.user.slack);
                 api.createUser(this.user.name, this.user.email, this.user.slack).then(response => {

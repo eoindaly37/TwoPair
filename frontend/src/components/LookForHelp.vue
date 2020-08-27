@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-    <div class="inputs container-md" >
+    <div v-if="!isHidden" class="inputs container-md" >
       <ejs-dropdownlist popupHeight="200px" popupWidth="250px"
                         :dataSource='productData' :fields='productField' placeholder='Select a Product'
                         v-model="lookforhelp.productid"
@@ -11,7 +11,7 @@
                         v-model="lookforhelp.userid"
                         sortOrder='Descending'>
       </ejs-dropdownlist>
-      <button @click="createLookForHelp()">Add Entry</button>
+      <butto v-on:click="isHidden = !isHidden" @click="createLookForHelp()">Add Entry</button>
     </div>
     <h1>Look For Help</h1>
     <div class="container-lg">
@@ -23,8 +23,7 @@
                 <h2><b>Users</b></h2>
               </div>
               <div class="col-sm-7">
-                <a href="#" class="btn btn-secondary"><fa-icon :icon="['fas', 'plus-circle']"/><span>Add New Entry</span></a>
-
+                <button v-on:click="isHidden = !isHidden" type="button" class="btn btn-danger">Edit</button>
               </div>
             </div>
           </div>
@@ -67,6 +66,7 @@ export default {
   name: 'lookforhelp',
   data() {
     return {
+      isHidden: true,
       response: [],
       errors: [],
       lookforhelp: {

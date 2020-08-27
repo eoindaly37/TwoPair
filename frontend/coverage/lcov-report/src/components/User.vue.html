@@ -22,9 +22,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.67% </span>
+                <span class="strong">29.41% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/15</span>
+                <span class='fraction'>5/17</span>
             </div>
         
             
@@ -36,16 +36,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>3/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.67% </span>
+                <span class="strong">29.41% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/15</span>
+                <span class='fraction'>5/17</span>
             </div>
         
             
@@ -282,7 +282,15 @@
 <a name='L224'></a><a href='#L224'>224</a>
 <a name='L225'></a><a href='#L225'>225</a>
 <a name='L226'></a><a href='#L226'>226</a>
-<a name='L227'></a><a href='#L227'>227</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L227'></a><a href='#L227'>227</a>
+<a name='L228'></a><a href='#L228'>228</a>
+<a name='L229'></a><a href='#L229'>229</a>
+<a name='L230'></a><a href='#L230'>230</a>
+<a name='L231'></a><a href='#L231'>231</a>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -334,6 +342,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -355,9 +364,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -510,10 +524,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
     &lt;div class="user"&gt;
+      &lt;div v-if="!isHidden"&gt;
         &lt;input type="text" v-model="user.name" placeholder="name"&gt;
         &lt;input type="text" v-model="user.email" placeholder="email"&gt;
         &lt;input type="text" v-model="user.slack" placeholder="@slack"&gt;
-        &lt;button @click="createNewUser()"&gt;Add User&lt;/button&gt;
+        &lt;button v-on:click="isHidden = !isHidden" @click="createNewUser()"&gt;Add User&lt;/button&gt;
+      &lt;/div&gt;
+&nbsp;
         &lt;h1&gt;User List&lt;/h1&gt;
         &lt;div class="container-lg"&gt;
             &lt;div class="table-responsive container-fluid"&gt;
@@ -524,19 +541,17 @@
                                 &lt;h2&gt;&lt;b&gt;Users&lt;/b&gt;&lt;/h2&gt;
                             &lt;/div&gt;
                             &lt;div class="col-sm-7"&gt;
-                                &lt;a href="#" class="btn btn-secondary"&gt;&lt;fa-icon :icon="['fas', 'plus-circle']"/&gt;&lt;span&gt;Add New User&lt;/span&gt;&lt;/a&gt;
-&nbsp;
+                              &lt;button v-on:click="isHidden = !isHidden" type="button" class="btn btn-danger"&gt;Edit&lt;/button&gt;
                             &lt;/div&gt;
                         &lt;/div&gt;
                     &lt;/div&gt;
                     &lt;table class="table table-striped table-hover"&gt;
                         &lt;thead&gt;
                         &lt;tr&gt;
-                            &lt;th&gt;#&lt;/th&gt;
-                            &lt;th&gt;Name&lt;/th&gt;
-                            &lt;th&gt;Email&lt;/th&gt;
-                            &lt;th&gt;Slack&lt;/th&gt;
-                            &lt;th&gt;Action&lt;/th&gt;
+                          &lt;th v-column-sortable:id&gt;#&lt;/th&gt;
+                          &lt;th v-column-sortable:name&gt;Name&lt;/th&gt;
+                          &lt;th v-column-sortable:email&gt;Lead&lt;/th&gt;
+                          &lt;th v-column-sortable:slack&gt;Domain&lt;/th&gt;
                         &lt;/tr&gt;
                         &lt;/thead&gt;
                         &lt;tbody v-for="user in retrievedUser"&gt;
@@ -560,11 +575,13 @@
 &nbsp;
 &lt;script&gt;
     import api from "./backend-api";
+    import columnSortable from 'vue-column-sortable';
 &nbsp;
     export default {
         name: 'user',
         data() {
             return {
+              isHidden: true,
                 response: [],
                 errors: [],
                 user: {
@@ -584,7 +601,11 @@
             this.getData();
 &nbsp;
         },
-        methods: {
+      directives: {columnSortable},
+      methods: {
+<span class="fstat-no" title="function not covered" >        orderBy(sortFn) {</span>
+<span class="cstat-no" title="statement not covered" >          this.retrievedUser.sort(sortFn)</span>
+        },
 <span class="fstat-no" title="function not covered" >            createNewUser () {</span>
 <span class="cstat-no" title="statement not covered" >                console.log(this.user.name + " " + this.user.email + " "  + this.user.slack);</span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >                api.createUser(this.user.name, this.user.email, this.user.slack).then(response =&gt; {</span></span>
@@ -741,7 +762,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Aug 27 2020 17:39:51 GMT+0100 (Irish Standard Time)
+                at Thu Aug 27 2020 18:13:13 GMT+0100 (Irish Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

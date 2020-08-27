@@ -1,6 +1,6 @@
 <template>
     <div class="user">
-      <div class="inputs container-md" >
+      <div v-if="!isHidden" class="inputs container-md" >
         <ejs-dropdownlist popupHeight="200px" popupWidth="250px"
                           :dataSource='productData' :fields='productField' placeholder='Select a Product'
                           v-model="sub.productid"
@@ -14,7 +14,7 @@
         <input type="text" v-model="sub.toi" placeholder="TOI">
         <input type="text" v-model="sub.slacksupport" placeholder="Slack Support">
         <input type="text" v-model="sub.slackengineer" placeholder="Slack Engineer">
-        <button @click="createSub()">Add Entry</button>
+        <button v-on:click="isHidden = !isHidden" @click="createSub()">Add Entry</button>
       </div>
         <h1>Subcomponents List</h1>
             <div class="container-lg">
@@ -26,8 +26,7 @@
                                     <h2><b>Users</b></h2>
                                 </div>
                                 <div class="col-sm-7">
-                                    <a href="#" class="btn btn-secondary"><fa-icon :icon="['fas', 'plus-circle']"/><span>Add New User</span></a>
-
+                                  <button v-on:click="isHidden = !isHidden" type="button" class="btn btn-danger">Edit</button>
                                 </div>
                             </div>
                         </div>
@@ -83,6 +82,7 @@ export default {
     name: 'subcomponents',
     data() {
         return {
+          isHidden: true,
             response: [],
             errors: [],
             sub: {

@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-    <div class="inputs container-md" >
+    <div v-if="!isHidden" class="inputs container-md" >
       <input type="text" v-model="product.name" placeholder="name">
       <ejs-dropdownlist popupHeight="200px" popupWidth="250px"
                         :dataSource='userData' :fields='userField' placeholder='Select a name'
@@ -12,7 +12,7 @@
                         v-model="product.domain"
                         sortOrder='Descending'>
       </ejs-dropdownlist>
-      <button @click="createProduct()">Add Product</button>
+      <button v-on:click="isHidden = !isHidden" @click="createProduct()">Add Product</button>
     </div>
     <h1>Product List</h1>
     <div class="container-lg">
@@ -24,8 +24,7 @@
                 <h2><b>Users</b></h2>
               </div>
               <div class="col-sm-7">
-                <a href="#" class="btn btn-secondary"><fa-icon :icon="['fas', 'plus-circle']"/><span>Add New Product</span></a>
-
+                <button v-on:click="isHidden = !isHidden" type="button" class="btn btn-danger">Edit</button>
               </div>
             </div>
           </div>
@@ -70,6 +69,7 @@ export default Vue.extend({
   name: 'product',
   data() {
     return {
+      isHidden: true,
       response: [],
       errors: [],
       product: {
