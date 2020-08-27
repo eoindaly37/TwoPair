@@ -7,10 +7,12 @@ import Subcomponents from "@/components/Subcomponents";
 import User from '@/components/User'
 import Domain from '@/components/Domain'
 import Product from '@/components/Product'
+import LookForHelp from '@/components/LookForHelp'
 import Login from '@/components/Login'
 import Protected from '@/components/Protected'
 
 import store from './store'
+import PairWith from "@/components/PairWith";
 
 Vue.use(Router);
 
@@ -24,6 +26,8 @@ const router = new Router({
         { path: '/user', component: User },
         { path: '/domain', component: Domain },
         { path: '/product', component: Product },
+        { path: '/lookforhelp', component: LookForHelp },
+        { path: '/pairwith', component: PairWith },
         { path: '/login', component: Login },
         {
             path: '/protected',

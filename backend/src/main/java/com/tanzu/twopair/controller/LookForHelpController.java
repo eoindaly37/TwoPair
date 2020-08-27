@@ -29,8 +29,7 @@ class LookForHelpController {
 	}
 
 	@PostMapping("/lookforhelp")
-	LookForHelpDTO newEmployee(@RequestBody LookForHelpDTO dto) {
-		return service.newLookForHelp(dto);
+	LookForHelpDTO newEmployee(@RequestBody LookForHelpDTO dto) { return service.newLookForHelp(dto);
 	}
 
 	// Single item

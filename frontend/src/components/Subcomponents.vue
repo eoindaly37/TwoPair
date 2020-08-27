@@ -1,5 +1,15 @@
 <template>
     <div class="user">
+      <input type="text" v-model="sub.productid" placeholder="Product ID">
+      <input type="text" v-model="sub.name" placeholder="Name">
+      <input type="text" v-model="sub.notes" placeholder="Notes">
+      <input type="text" v-model="sub.code" placeholder="Code">
+      <input type="text" v-model="sub.jira" placeholder="JIRA">
+      <input type="text" v-model="sub.playbook" placeholder="Playbook">
+      <input type="text" v-model="sub.toi" placeholder="TOI">
+      <input type="text" v-model="sub.slacksupport" placeholder="Slack Support">
+      <input type="text" v-model="sub.slackengineer" placeholder="Slack Engineer">
+      <button @click="createSub()">Add Entry</button>
         <h1>Subcomponents List</h1>
             <div class="container-lg">
                 <div class="table-responsive container-fluid">
@@ -66,7 +76,7 @@
                 errors: [],
                 sub: {
                     id: 0,
-                    productid: '',
+                    productid: 0,
                     name: '',
                     notes: '',
                     code: '',
@@ -85,6 +95,21 @@
             this.getData();
         },
         methods: {
+          createSub () {
+            api.createSubcomponent(this.sub.productid, this.sub.name, this.sub.notes, this.sub.code, this.sub.jira
+                , this.sub.playbook, this.sub.toi, this.sub.slacksupport, this.sub.slackengineer).then(response => {
+              // JSON responses are automatically parsed.
+              this.response = response.data;
+              this.sub.id = response.data;
+              // console.log('Created new User with Id ' + response.data);
+              console.log(response)
+              this.showResponse = true
+            })
+                .catch(e => {
+                  this.errors.push(e)
+                })
+
+          },
             getData() {
                 api.getSubs().then(response => {
                     console.log(response)

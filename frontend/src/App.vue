@@ -30,6 +30,14 @@
           <li class="nav-item">
             <router-link class="nav-link" active-class="active" to="/domain">Domains</router-link>
           </li>
+
+          <li class="nav-item">
+            <router-link class="nav-link" active-class="active" to="/lookforhelp">Look for Help</router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link class="nav-link" active-class="active" to="/pairwith">Pair With</router-link>
+          </li>
         </ul>
       </div>
     </nav>
